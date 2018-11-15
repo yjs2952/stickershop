@@ -1,6 +1,7 @@
 package com.stickershop.stickershop.domain;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -26,4 +27,16 @@ public class Order {
     @OneToMany(orphanRemoval = true)
     @JoinColumn(name = "order_id")
     private List<UserCoupon> userCouponList;
+
+    @OneToMany(orphanRemoval = true)
+    @JoinColumn(name = "product_id")
+    private List<Product> productList;
+
+    @Column(nullable = false, columnDefinition = "int default 0")
+    private int totalPrice;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date orderDate;
+
+
 }
