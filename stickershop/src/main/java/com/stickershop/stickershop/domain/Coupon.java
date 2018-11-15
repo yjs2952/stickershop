@@ -32,6 +32,9 @@ public class Coupon {
     @Temporal(TemporalType.TIMESTAMP)
     private Date expireDate;
 
+    @Column(length = 1, nullable = false, columnDefinition = "int default 0")
+    private int expireType;
+
     @Column(nullable = false, columnDefinition = "int default 0")
     private Integer period;
 
