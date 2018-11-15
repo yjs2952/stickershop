@@ -1,0 +1,1 @@
+insert into grade (grade, name, sale_money, sale_ratio) values(1, "양민", 10000, 0.9)
