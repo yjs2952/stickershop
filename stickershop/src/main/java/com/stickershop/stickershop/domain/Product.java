@@ -1,6 +1,7 @@
 package com.stickershop.stickershop.domain;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -19,7 +20,7 @@ public class Product {
             inverseJoinColumns = @JoinColumn(name = "category_id"))
     List<Category> categoryList;
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "product_id", nullable = false)
     private List<Image> imageList;
 
@@ -31,5 +32,12 @@ public class Product {
 
     @Column(nullable = false, columnDefinition = "int default 0")
     private int curQty;
-    //List<Image>
+
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    private Date regDate;
+
+    @Version
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date modDate;
 }

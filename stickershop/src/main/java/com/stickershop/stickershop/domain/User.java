@@ -23,19 +23,15 @@ public class User {
     @Column(length = 50, nullable = false, unique = true)
     private String email;
 
-    @Column(nullable = false)
+    @Column(length = 20, nullable = false)
     private String password;
 
     @Column(length = 20, nullable = false, unique = true)
     private String nickname;
 
     @OneToMany(cascade = CascadeType.REMOVE, orphanRemoval = true)
-    @JoinColumn(name = "user_id")
-    private List<UserCoupon> userCouponList;
-
-    @OneToMany(cascade = CascadeType.REMOVE, orphanRemoval = true)
     @JoinColumn(name = "user_id", nullable = false)
-    private List<Cart> cartList;
+    private List<UserCoupon> userCouponList;
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"),
@@ -43,11 +39,15 @@ public class User {
     private Set<Role> roles;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE, orphanRemoval = true)
-    private List<Order> orderList;
+    private List<OrderInfo> orderList;
+
+    @OneToMany(cascade = CascadeType.REMOVE, orphanRemoval = true)
+    @JoinColumn(name = "user_id")
+    private List<CartProduct> cartProductList;
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "favorite_products", joinColumns = @JoinColumn(name = "user_id"),
-                                            inverseJoinColumns = @JoinColumn(name = "product_id"))
+                                            inverseJoinColumns = @JoinColumn(name = "favorite_id"))
     private List<Product> productList;
 
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
@@ -66,9 +66,12 @@ public class User {
     @Column(columnDefinition = "int default 0")
     private int mileage;
 
+
     @Temporal(TemporalType.TIMESTAMP)
+    @Column(columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     private Date regDate;
 
+    @Version
     @Temporal(TemporalType.TIMESTAMP)
     private Date modDate;
 }

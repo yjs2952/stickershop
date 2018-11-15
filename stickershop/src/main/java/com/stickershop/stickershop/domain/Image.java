@@ -32,5 +32,6 @@ public class Image {
     private Long size;
 
     @Temporal(TemporalType.TIMESTAMP)
+    @Column(columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     private Date regDate;
 }

@@ -21,7 +21,7 @@ public class UserCoupon {
     @Column(columnDefinition = "int default 0")
     private int useCheck;
 
-    /*@ManyToOne
-    @JoinColumn(name = "orderinfo_id")
-    private Order order;*/
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    private Date regDate;
 }

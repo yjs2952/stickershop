@@ -35,9 +35,17 @@ public class Coupon {
     @Column(length = 1, nullable = false, columnDefinition = "int default 0")
     private int expireType;
 
-    @Column(nullable = false, columnDefinition = "int default 0")
+    @Column
     private Integer period;
 
     @Lob
     private String description;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    private Date regDate;
+
+    @Version
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date modDate;
 }

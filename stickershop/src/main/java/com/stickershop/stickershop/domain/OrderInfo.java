@@ -5,8 +5,8 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
-@Table(name = "orderinfo")
-public class Order {
+@Table(name = "order_info")
+public class OrderInfo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,14 +29,13 @@ public class Order {
     private List<UserCoupon> userCouponList;
 
     @OneToMany(orphanRemoval = true)
-    @JoinColumn(name = "product_id")
+    @JoinColumn(name = "order_id")
     private List<Product> productList;
 
     @Column(nullable = false, columnDefinition = "int default 0")
     private int totalPrice;
 
     @Temporal(TemporalType.TIMESTAMP)
-    private Date orderDate;
-
-
+    @Column(columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    private Date regDate;
 }
