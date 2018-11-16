@@ -11,6 +11,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @RunWith(SpringRunner.class)
 @DataJpaTest
 @Transactional
@@ -28,5 +30,14 @@ public class GradeRepositoryTest {
             System.out.println("grade_id : " + grade.getId());
             System.out.println("grade_id : " + grade.getName());
             System.out.println("=====================");
+    }
+
+    @Test
+    public void 모든_등급_가져오기() throws Exception{
+        List<Grade> list = gradeRepository.findAll();
+
+        for (Grade grade : list) {
+            System.out.println(grade.toString());
+        }
     }
 }

@@ -1,11 +1,14 @@
 package com.stickershop.stickershop.domain;
 
+import lombok.Getter;
+
 import javax.persistence.*;
 import java.util.Date;
 
+@Getter
 @Entity
-@Table(name = "user_coupon")
-public class UserCoupon {
+@Table(name = "user_coupons")
+public class UserCoupons {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

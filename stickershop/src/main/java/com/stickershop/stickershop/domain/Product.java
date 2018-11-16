@@ -1,9 +1,12 @@
 package com.stickershop.stickershop.domain;
 
+import lombok.Getter;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
+@Getter
 @Entity
 @Table(name = "product")
 public class Product {
@@ -12,11 +15,11 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "name", length = 20, nullable = false)
+    @Column(name = "name", length = 50, nullable = false)
     private String name;
 
     @ManyToMany
-    @JoinTable(name = "product_category", joinColumns = @JoinColumn(name = "product_id"),
+    @JoinTable(name = "product_categories", joinColumns = @JoinColumn(name = "product_id"),
             inverseJoinColumns = @JoinColumn(name = "category_id"))
     List<Category> categoryList;
 

@@ -1,7 +1,10 @@
 package com.stickershop.stickershop.domain;
 
+import lombok.Getter;
+
 import javax.persistence.*;
 
+@Getter
 @Entity
 @Table(name = "shipping")
 public class Shipping {

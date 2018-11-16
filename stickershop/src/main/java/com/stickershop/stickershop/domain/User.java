@@ -2,13 +2,16 @@ package com.stickershop.stickershop.domain;
 
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
-@Data
+@Getter
+@Setter
 @Entity
 @Table(name = "user")
 public class User {
@@ -31,10 +34,10 @@ public class User {
 
     @OneToMany(cascade = CascadeType.REMOVE, orphanRemoval = true)
     @JoinColumn(name = "user_id", nullable = false)
-    private List<UserCoupon> userCouponList;
+    private List<UserCoupons> userCouponList;
 
     @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"),
+    @JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"),
                                     inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
 
@@ -43,12 +46,12 @@ public class User {
 
     @OneToMany(cascade = CascadeType.REMOVE, orphanRemoval = true)
     @JoinColumn(name = "user_id")
-    private List<CartProduct> cartProductList;
+    private List<CartProducts> cartProductList;
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "favorite_products", joinColumns = @JoinColumn(name = "user_id"),
                                             inverseJoinColumns = @JoinColumn(name = "favorite_id"))
-    private List<Product> productList;
+    private List<Product> favoriteProductList;
 
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     @JoinColumn(name = "grade_id")

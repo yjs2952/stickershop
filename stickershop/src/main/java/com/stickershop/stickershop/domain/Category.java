@@ -1,8 +1,11 @@
 package com.stickershop.stickershop.domain;
 
+import lombok.Getter;
+
 import javax.persistence.*;
 import java.util.Date;
 
+@Getter
 @Entity
 @Table(name = "category")
 public class Category {

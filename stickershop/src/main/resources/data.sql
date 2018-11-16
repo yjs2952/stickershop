@@ -24,11 +24,11 @@ insert into role (id, mod_date, name, reg_date) values (99, null, '관리자', '
 insert into role (id, mod_date, name, reg_date) values (1, null, '사용자', '2018-11-15 18:09:59');
 
 -- user_role
-insert into user_role (user_id, role_id) values ('admin', 99);
-insert into user_role (user_id, role_id) values ('spring', 1);
-insert into user_role (user_id, role_id) values ('springboot', 1);
-insert into user_role (user_id, role_id) values ('jpa', 1);
-insert into user_role (user_id, role_id) values ('object', 1);
+insert into user_roles (user_id, role_id) values ('admin', 99);
+insert into user_roles (user_id, role_id) values ('spring', 1);
+insert into user_roles (user_id, role_id) values ('springboot', 1);
+insert into user_roles (user_id, role_id) values ('jpa', 1);
+insert into user_roles (user_id, role_id) values ('object', 1);
 
 -- coupon
 insert into coupon (id, cur_qty, description, expire_date, expire_type, mod_date, name, period, reg_date, sale_money, sale_ratio, total_qty)
@@ -41,11 +41,11 @@ insert into coupon (id, cur_qty, description, expire_date, expire_type, mod_date
 values (3, 76, '선착순 이벤트 쿠폰', '2018-12-31 23:59:59', 1, null, '이벤트 쿠폰', null, '2018-11-15 18:33:58', 1000, 0, 100);
 
 -- user_coupon
-insert into user_coupon (id, expire_date, reg_date, use_check, coupon_id, order_id, user_id) values (1, '2019-02-15 23:59:59', '2018-11-15 19:18:38', 0, 1, null, 'spring');
-insert into user_coupon (id, expire_date, reg_date, use_check, coupon_id, order_id, user_id) values (2, '2018-12-31 23:59:59', '2018-11-15 19:18:38', 0, 3, null, 'spring');
-insert into user_coupon (id, expire_date, reg_date, use_check, coupon_id, order_id, user_id) values (3, '2019-02-15 23:59:59', '2018-11-15 19:18:38', 1, 1, null, 'jpa');
-insert into user_coupon (id, expire_date, reg_date, use_check, coupon_id, order_id, user_id) values (4, null, '2018-11-15 19:18:38', 0, 2, null, 'jpa');
-insert into user_coupon (id, expire_date, reg_date, use_check, coupon_id, order_id, user_id) values (5, '2018-12-31 23:59:59', '2018-11-15 19:18:38', 0, 3, null, 'jpa');
+insert into user_coupons (id, expire_date, reg_date, use_check, coupon_id, order_id, user_id) values (1, '2019-02-15 23:59:59', '2018-11-15 19:18:38', 0, 1, null, 'spring');
+insert into user_coupons (id, expire_date, reg_date, use_check, coupon_id, order_id, user_id) values (2, '2018-12-31 23:59:59', '2018-11-15 19:18:38', 0, 3, null, 'spring');
+insert into user_coupons (id, expire_date, reg_date, use_check, coupon_id, order_id, user_id) values (3, '2019-02-15 23:59:59', '2018-11-15 19:18:38', 1, 1, null, 'jpa');
+insert into user_coupons (id, expire_date, reg_date, use_check, coupon_id, order_id, user_id) values (4, null, '2018-11-15 19:18:38', 0, 2, null, 'jpa');
+insert into user_coupons (id, expire_date, reg_date, use_check, coupon_id, order_id, user_id) values (5, '2018-12-31 23:59:59', '2018-11-15 19:18:38', 0, 3, null, 'jpa');
 
 -- category
 insert into category (id, mod_date, name, reg_date) values (1, null, '개발자', '2018-11-15 19:18:38');
@@ -53,18 +53,62 @@ insert into category (id, mod_date, name, reg_date) values (2, null, '캐릭터'
 insert into category (id, mod_date, name, reg_date) values (3, null, '안내', '2018-11-15 19:18:38');
 
 -- product
-insert into product (id, cur_qty, mod_date, name, price, reg_date, total_qty, order_id) values (1, 90, null, '백엔드 개발자 스티커 모음', 8000, '2018-11-15 19:39:01', 100, null);
-insert into product (id, cur_qty, mod_date, name, price, reg_date, total_qty, order_id) values (2, 100, null, '프론트 엔드 개발자 스티커 모음', 8000, '2018-11-15 19:39:01', 100, null);
-insert into product (id, cur_qty, mod_date, name, price, reg_date, total_qty, order_id) values (3, 100, null, '포켓몬스터 스티커 모음', 10000, '2018-11-15 19:39:01', 50, null);
-insert into product (id, cur_qty, mod_date, name, price, reg_date, total_qty, order_id) values (4, 100, null, '뽀로로 스티커 모음', 15000, '2018-11-15 19:39:01', 200, null);
-insert into product (id, cur_qty, mod_date, name, price, reg_date, total_qty, order_id) values (5, 30, null, '안내 문구 스티커 모음', 10000, '2018-11-15 19:39:01', 100, null);
-insert into product (id, cur_qty, mod_date, name, price, reg_date, total_qty, order_id) values (6, 80, null, '풀스택 개발자 스티커 모음', 15000, '2018-11-15 19:39:01', 100, null);
+insert into product (id, cur_qty, mod_date, name, price, reg_date, total_qty) values (1, 90, null, '백엔드 개발자 스티커 모음', 8000, '2018-11-15 19:39:01', 100);
+insert into product (id, cur_qty, mod_date, name, price, reg_date, total_qty) values (2, 100, null, '프론트 엔드 개발자 스티커 모음', 8000, '2018-11-15 19:39:01', 100);
+insert into product (id, cur_qty, mod_date, name, price, reg_date, total_qty) values (3, 100, null, '포켓몬스터 스티커 모음', 10000, '2018-11-15 19:39:01', 50);
+insert into product (id, cur_qty, mod_date, name, price, reg_date, total_qty) values (4, 100, null, '뽀로로 스티커 모음', 15000, '2018-11-15 19:39:01', 200);
+insert into product (id, cur_qty, mod_date, name, price, reg_date, total_qty) values (5, 30, null, '안내 문구 스티커 모음', 10000, '2018-11-15 19:39:01', 100);
+insert into product (id, cur_qty, mod_date, name, price, reg_date, total_qty) values (6, 80, null, '풀스택 개발자 스티커 모음', 15000, '2018-11-15 19:39:01', 100);
 
--- product_category
-insert into product_category (product_id, category_id) values (1, 1);
-insert into product_category (product_id, category_id) values (2, 1);
-insert into product_category (product_id, category_id) values (3, 2);
-insert into product_category (product_id, category_id) values (4, 2);
-insert into product_category (product_id, category_id) values (5, 3);
-insert into product_category (product_id, category_id) values (6, 1);
+-- PRODUCT_CATEGORY
+insert into product_categories (product_id, category_id) values (1, 1);
+insert into product_categories (product_id, category_id) values (2, 1);
+insert into product_categories (product_id, category_id) values (3, 2);
+insert into product_categories (product_id, category_id) values (4, 2);
+insert into product_categories (product_id, category_id) values (5, 3);
+insert into product_categories (product_id, category_id) values (6, 1);
 
+-- ORDER_STATUS
+INSERT INTO order_status (id, name) VALUES (1, '결제 확인중');
+INSERT INTO order_status (id, name) VALUES (2, '결제 완료');
+INSERT INTO order_status (id, name) VALUES (3, '배송 대기중');
+INSERT INTO order_status (id, name) VALUES (4, '배송중');
+INSERT INTO order_status (id, name) VALUES (5, '배송완료');
+INSERT INTO order_status (id, name) VALUES (6, '구매 확정');
+INSERT INTO order_status (id, name) VALUES (7, '결제 취소');
+INSERT INTO order_status (id, name) VALUES (8, '반품');
+INSERT INTO order_status (id, name) VALUES (9, '환불');
+
+-- ORDER_INFO
+INSERT INTO order_info (id, reg_date, total_price, order_status_id, shipping_id, user_id) VALUES (1, '2018-11-16 17:08:36', 0, 1, null, 'spring');
+INSERT INTO order_info (id, reg_date, total_price, order_status_id, shipping_id, user_id) VALUES (2, '2018-11-16 17:08:36', 0, 2, null, 'springboot');
+INSERT INTO order_info (id, reg_date, total_price, order_status_id, shipping_id, user_id) VALUES (3, '2018-11-16 17:08:36', 0, 3, null, 'jpa');
+INSERT INTO order_info (id, reg_date, total_price, order_status_id, shipping_id, user_id) VALUES (4, '2018-11-16 17:08:36', 0, 4, null, 'object');
+INSERT INTO order_info (id, reg_date, total_price, order_status_id, shipping_id, user_id) VALUES (5, '2018-11-16 17:11:58', 0, 2, null, 'spring');
+INSERT INTO order_info (id, reg_date, total_price, order_status_id, shipping_id, user_id) VALUES (6, '2018-11-16 17:11:58', 0, 3, null, 'jpa');
+
+-- ORDER_INFO_PRODUCTS
+INSERT INTO order_info_products (id, mileage, name, price, quantity, product_id, order_id) VALUES (6, 80, '백엔드 개발자 스티커 모음', 8000, 1, 1, 1);
+INSERT INTO order_info_products (id, mileage, name, price, quantity, product_id, order_id) VALUES (7, 80, '프론트 엔드 개발자 스티커 모음', 8000, 1, 2, 1);
+INSERT INTO order_info_products (id, mileage, name, price, quantity, product_id, order_id) VALUES (8, 100, '포켓몬스터 스티커 모음', 10000, 2, 3, 2);
+INSERT INTO order_info_products (id, mileage, name, price, quantity, product_id, order_id) VALUES (9, 150, '풀스택 개발자 스티커 모음', 15000, 1, 6, 2);
+INSERT INTO order_info_products (id, mileage, name, price, quantity, product_id, order_id) VALUES (10, 100, '안내 문구 스티커 모음', 10000, 3, 5, 2);
+INSERT INTO order_info_products (id, mileage, name, price, quantity, product_id, order_id) VALUES (11, 80, '백엔드 개발자 스티커 모음', 8000, 2, 1, 3);
+INSERT INTO order_info_products (id, mileage, name, price, quantity, product_id, order_id) VALUES (12, 80, '프론트 엔드 개발자 스티커 모음', 8000, 3, 2, 3);
+INSERT INTO order_info_products (id, mileage, name, price, quantity, product_id, order_id) VALUES (13, 100, '뽀로로 스티커 모음', 10000, 2, 4, 4);
+INSERT INTO order_info_products (id, mileage, name, price, quantity, product_id, order_id) VALUES (14, 100, '포켓몬스터 스티커 모음', 10000, 1, 3, 4);
+INSERT INTO order_info_products (id, mileage, name, price, quantity, product_id, order_id) VALUES (15, 80, '백엔드 개발자 스티커 모음', 8000, 1, 1, 5);
+INSERT INTO order_info_products (id, mileage, name, price, quantity, product_id, order_id) VALUES (16, 80, '프론트 엔드 개발자 스티커 모음', 8000, 1, 2, 5);
+INSERT INTO order_info_products (id, mileage, name, price, quantity, product_id, order_id) VALUES (17, 150, '풀스택 개발자 스티커 모음', 15000, 1, 6, 5);
+INSERT INTO order_info_products (id, mileage, name, price, quantity, product_id, order_id) VALUES (18, 100, '포켓몬스터 스티커 모음', 10000, 4, 3, 6);
+INSERT INTO order_info_products (id, mileage, name, price, quantity, product_id, order_id) VALUES (19, 100, '뽀로로 스티커 모음', 10000, 3, 4, 6);
+INSERT INTO order_info_products (id, mileage, name, price, quantity, product_id, order_id) VALUES (20, 150, '풀스택 개발자 스티커 모음', 15000, 2, 6, 6);
+INSERT INTO order_info_products (id, mileage, name, price, quantity, product_id, order_id) VALUES (21, 100, '안내 문구 스티커 모음', 10000, 5, 5, 6);
+
+-- SHIPPING
+INSERT INTO shipping (id, address, fee, memo, phone, user_name, zip_code) VALUES (1, '고양시 어딘가', 2500, '부재시 경비실에 맡겨주세요.', '010-1234-5678', '우주인', 12345);
+INSERT INTO shipping (id, address, fee, memo, phone, user_name, zip_code) VALUES (2, '서울시 강서구', 2500, '빠른 배송 부탁드립니다.', '010-1111-2222', '지구인', 54321);
+INSERT INTO shipping (id, address, fee, memo, phone, user_name, zip_code) VALUES (3, '서울시 강남구', 2500, '부재시 경비실에...', '010-3212-3456', '화성인', 98766);
+INSERT INTO shipping (id, address, fee, memo, phone, user_name, zip_code) VALUES (4, '서울시 서초구', 2500, '경비실에 맡겨주세요.', '010-1212-3434', '나메크성인', 45678);
+INSERT INTO shipping (id, address, fee, memo, phone, user_name, zip_code) VALUES (5, '고양시 어딘가', 2500, '초인종 누르지 말고 노크해주세요.', '010-1234-5678', '우주인', 12345);
+INSERT INTO shipping (id, address, fee, memo, phone, user_name, zip_code) VALUES (6, '서울시 강남구', 2500, '빠른 배송....', '010-3212-3456', '화성인', 98766);

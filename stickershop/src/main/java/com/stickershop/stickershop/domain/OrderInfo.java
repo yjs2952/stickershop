@@ -1,9 +1,12 @@
 package com.stickershop.stickershop.domain;
 
+import lombok.Getter;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
+@Getter
 @Entity
 @Table(name = "order_info")
 public class OrderInfo {
@@ -12,25 +15,25 @@ public class OrderInfo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "shipping_id")
     private Shipping shipping;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "order_status_id")
     private OrderStatus orderStatus;
 
     @OneToMany(orphanRemoval = true)
     @JoinColumn(name = "order_id")
-    private List<UserCoupon> userCouponList;
+    private List<UserCoupons> userCouponList;
 
     @OneToMany(orphanRemoval = true)
     @JoinColumn(name = "order_id")
-    private List<Product> productList;
+    private List<OrderInfoProducts> orderInfoProductList;
 
     @Column(nullable = false, columnDefinition = "int default 0")
     private int totalPrice;
