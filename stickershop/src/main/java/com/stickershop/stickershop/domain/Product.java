@@ -24,7 +24,7 @@ public class Product {
     List<Category> categoryList;
 
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "product_id", nullable = false)
+    @JoinColumn(name = "product_id")
     private List<Image> imageList;
 
     @Column(nullable = false)
