@@ -26,26 +26,6 @@ public class UserRepositoryTest {
     UserRepository userRepository;
 
     @Test
-    public void 이름으로_유저_목록_가져오기() throws Exception {
-        Pageable pageable = PageRequest.of(0, 5);
-        Page<User> users = userRepository.findById("spring", pageable);
-
-        System.out.println(users.getTotalElements());
-        System.out.println(users.getTotalPages());
-
-        System.out.println("==========================");
-        for (User user : users) {
-            System.out.println(user.getId());
-            /*System.out.println(user.getUserId());*/
-            System.out.println(user.getUserName());
-            System.out.println(user.getEmail());
-            System.out.println(user.getPhone());
-            System.out.println(user.getOrderList().size());
-            System.out.println("==========================");
-        }
-    }
-
-    @Test
     public void 모든_유저_목록_가져오기() throws Exception{
         Pageable pageable = PageRequest.of(0, 5);
         Page<User> users = userRepository.findAll(pageable);
@@ -92,7 +72,7 @@ public class UserRepositoryTest {
 
         Pageable pageable = PageRequest.of(0, 5);
 
-        Page<User> users = userRepository.findUserAndRoleById("spring", pageable);
+        Page<User> users = userRepository.findUserById("spring", pageable);
 
         System.out.println(users.getTotalElements());
         System.out.println(users.getTotalPages());
@@ -107,7 +87,7 @@ public class UserRepositoryTest {
             System.out.println("==========================");
         }
 
-        User user1 = new User();
+       /* User user1 = new User();
         user1.setId("entity");
         user1.setAddress("우주 어딘가");
         user1.setEmail("asd11@gmail.com");
@@ -121,6 +101,24 @@ public class UserRepositoryTest {
         entityManager.persist(user1);
 
         user1.setZipCode(65432);
-        entityManager.flush();
+        entityManager.flush();*/
+    }
+
+    @Test
+    public void 로그인_정보_가져오기() throws Exception {
+        int result = userRepository.findByIdAndPassword("spring", "1234");
+        System.out.println("결과 : " + result);
+    }
+
+    @Test
+    public void 아이디_찾기() throws Exception {
+        String id = userRepository.findIdByEmail("asd@naver.com");
+        System.out.println("아이디 " +id);
+    }
+
+    @Test
+    public void 패스워드_찾기() throws Exception{
+        String pw = userRepository.findPasswordByIdAndEmail("spring", "asd@naver.com");
+        System.out.println("패스워드 : " + pw);
     }
 }

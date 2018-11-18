@@ -14,12 +14,19 @@ public interface UserRepository extends JpaRepository<User, String> {
 
     Page<User> findAll(Pageable pageable);
 
-    Page<User> findById(String id, Pageable pageable);
-
     @Query(value = "select u from User u where u.id like CONCAT('%', :keyword, '%') or u.userName like CONCAT('%', :keyword, '%') or u.nickname like CONCAT('%', :keyword, '%')")
     Page<User> findUsersByKeyword(@Param("keyword") String keyword, Pageable pageable);
 
-    @Query(value = "SELECT u FROM User u JOIN u.roles WHERE u.id = :id")
-    Page<User> findUserAndRoleById(@Param("id") String id, Pageable pageable);
+    @Query(value = "SELECT u FROM User u JOIN FETCH u.roles JOIN FETCH u.grade WHERE u.id = :id",
+            countQuery = "SELECT COUNT(u) FROM User u WHERE u.id = :id")
+    Page<User> findUserById(@Param("id") String id, Pageable pageable);
 
+    @Query(value = "SELECT COUNT(u) FROM User u WHERE u.id = :id AND u.password = :pw")
+    int findByIdAndPassword(@Param("id") String id, @Param("pw") String pw);
+
+    @Query(value = "SELECT u.id FROM User u WHERE u.email = :email")
+    String findIdByEmail(@Param("email") String email);
+
+    @Query(value = "SELECT u.password FROM User u WHERE u.id = :id AND u.email = :email")
+    String findPasswordByIdAndEmail(@Param("id") String id, @Param("email") String email);
 }
