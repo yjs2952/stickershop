@@ -11,11 +11,18 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 
     Page<Product> findAll(Pageable pageable);
 
-    /*@Query(value = "SELECT p FROM Product p JOIN p.categoryList c WHERE  ")
-    Page<Product> findByCategory(String category, Pageable pageable);*/
-
     @Query(value = "SELECT p FROM Product p where p.name like CONCAT('%', :keyword, '%')")
-    Page<Product> findByKeyword(String keyword, Pageable pageable);
+    Page<Product> findByKeyword(@Param("keyword") String keyword, Pageable pageable);
 
-    Product findProductById();
+    /*@Query(value = "select p.id, p.name, p.price, p.total_qty, p.cur_qty, p.reg_date, p.mod_date from product p " +
+                   "inner join product_categories pc " +
+                   "inner join category c " +
+                   "where p.id = pc.product_id " +
+                   "AND pc.category_id = c.id " +
+                   "AND c.id = :id"
+           , nativeQuery = true)*/
+    @Query(value = "SELECT p FROM Product p WHERE p IN (SELECT p2 FROM Product p2 JOIN p2.categoryList c WHERE c.id = :id)")
+    Page<Product> findProductByCategoryId(@Param("id") Long id, Pageable pageable);
+
+
 }

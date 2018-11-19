@@ -4,6 +4,7 @@ import lombok.Getter;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Getter
 @Entity
@@ -16,6 +17,9 @@ public class Category {
 
     @Column(name = "name", length = 20, nullable = false)
     private String name;
+
+    @ManyToMany(mappedBy = "categoryList")
+    private List<Product> productList;
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
