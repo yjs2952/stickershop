@@ -19,10 +19,5 @@ public class CategoryRepositoryTest {
     @Autowired
     private CategoryRepository categoryRepository;
 
-    @Test
-    public void 카테고리별로_상품조회() throws Exception {
-        Pageable pageable = PageRequest.of(0, 5);
-        Category category = categoryRepository.findProductsByCategory(1L);
-        System.out.println(category.getProductList().size());
-    }
+
 }

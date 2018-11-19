@@ -21,8 +21,12 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
                    "AND pc.category_id = c.id " +
                    "AND c.id = :id"
            , nativeQuery = true)*/
-    @Query(value = "SELECT p FROM Product p WHERE p IN (SELECT p2 FROM Product p2 JOIN p2.categoryList c WHERE c.id = :id)")
+    @Query(value = "SELECT p FROM Product p " +
+                   "WHERE p " +
+                   "IN (SELECT p2 FROM Product p2 JOIN p2.categoryList c WHERE c.id = :id) " +
+                   "ORDER BY p.regDate")
     Page<Product> findProductByCategoryId(@Param("id") Long id, Pageable pageable);
 
-
+    @Query(value = "SELECT p FROM Product p WHERE p IN (SELECT p2 FROM Product p2 JOIN p2.categoryList c WHERE c.id = :id AND p2.name like concat('%', :keyword, '%'))")
+    Page<Product> findProductByCategoryIdAndName(@Param("id") Long id, @Param("keyword") String keyword, Pageable pageable);
 }

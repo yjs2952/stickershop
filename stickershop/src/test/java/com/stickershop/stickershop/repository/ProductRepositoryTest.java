@@ -23,7 +23,7 @@ public class ProductRepositoryTest {
     @Test
     public void 카테고리별_상품조회() throws Exception {
         Pageable pageable = PageRequest.of(0, 5);
-        Page<Product> products = productRepository.findProductByCategoryId(1L, pageable);
+        Page<Product> products = productRepository.findProductByCategoryIdAndName(1L, "백엔드", pageable);
 
         System.out.println(products.getTotalPages());
         System.out.println(products.getTotalElements());
