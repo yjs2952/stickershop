@@ -53,12 +53,21 @@ insert into category (id, mod_date, name, reg_date) values (2, null, '캐릭터'
 insert into category (id, mod_date, name, reg_date) values (3, null, '안내', '2018-11-15 19:18:38');
 
 -- product
-insert into product (id, cur_qty, mod_date, name, price, reg_date, total_qty) values (1, 90, null, '백엔드 개발자 스티커 모음', 8000, '2018-11-15 19:39:01', 100);
-insert into product (id, cur_qty, mod_date, name, price, reg_date, total_qty) values (2, 100, null, '프론트 엔드 개발자 스티커 모음', 8000, '2018-11-15 19:39:01', 100);
-insert into product (id, cur_qty, mod_date, name, price, reg_date, total_qty) values (3, 100, null, '포켓몬스터 스티커 모음', 10000, '2018-11-15 19:39:01', 50);
-insert into product (id, cur_qty, mod_date, name, price, reg_date, total_qty) values (4, 100, null, '뽀로로 스티커 모음', 15000, '2018-11-15 19:39:01', 200);
-insert into product (id, cur_qty, mod_date, name, price, reg_date, total_qty) values (5, 30, null, '안내 문구 스티커 모음', 10000, '2018-11-15 19:39:01', 100);
-insert into product (id, cur_qty, mod_date, name, price, reg_date, total_qty) values (6, 80, null, '풀스택 개발자 스티커 모음', 15000, '2018-11-15 19:39:01', 100);
+INSERT INTO boot (id, cur_qty, mod_date, name, price, reg_date, total_qty) VALUES (1, 90, null, '백엔드 개발자 스티커 모음', 8000, '2018-11-15 19:39:01', 100);
+INSERT INTO boot (id, cur_qty, mod_date, name, price, reg_date, total_qty) VALUES (2, 100, null, '프론트 엔드 개발자 스티커 모음', 8000, '2018-11-15 19:39:01', 100);
+INSERT INTO boot (id, cur_qty, mod_date, name, price, reg_date, total_qty) VALUES (3, 100, null, '포켓몬스터 스티커 모음', 10000, '2018-11-15 19:39:01', 50);
+INSERT INTO boot (id, cur_qty, mod_date, name, price, reg_date, total_qty) VALUES (4, 100, null, '뽀로로 스티커 모음', 15000, '2018-11-15 19:39:01', 200);
+INSERT INTO boot (id, cur_qty, mod_date, name, price, reg_date, total_qty) VALUES (5, 30, null, '안내 문구 스티커 모음', 10000, '2018-11-15 19:39:01', 100);
+INSERT INTO boot (id, cur_qty, mod_date, name, price, reg_date, total_qty) VALUES (6, 80, null, '풀스택 개발자 스티커 모음', 15000, '2018-11-15 19:39:01', 100);
+INSERT INTO boot (id, cur_qty, mod_date, name, price, reg_date, total_qty) VALUES (7, 100, null, '자바 개발자 스티커 모음', 10000, '2018-11-19 21:55:02', 100);
+INSERT INTO boot (id, cur_qty, mod_date, name, price, reg_date, total_qty) VALUES (8, 100, null, '파이썬 개발자 스티커 모음', 8000, '2018-11-19 21:55:02', 100);
+INSERT INTO boot (id, cur_qty, mod_date, name, price, reg_date, total_qty) VALUES (9, 100, null, '루비 개발자 스티커 모음', 1000, '2018-11-19 21:55:02', 100);
+INSERT INTO boot (id, cur_qty, mod_date, name, price, reg_date, total_qty) VALUES (10, 100, null, '디지몬 스티커 모음', 5000, '2018-11-19 21:55:02', 100);
+INSERT INTO boot (id, cur_qty, mod_date, name, price, reg_date, total_qty) VALUES (11, 100, null, '건담 스티커 모음', 10000, '2018-11-19 21:55:02', 100);
+INSERT INTO boot (id, cur_qty, mod_date, name, price, reg_date, total_qty) VALUES (12, 100, null, '리눅스 개발자 스티커 모음', 10000, '2018-11-19 21:55:02', 100);
+INSERT INTO boot (id, cur_qty, mod_date, name, price, reg_date, total_qty) VALUES (13, 100, null, '데이터베이스 개발자 스티커 모음', 10000, '2018-11-19 21:55:02', 100);
+INSERT INTO boot (id, cur_qty, mod_date, name, price, reg_date, total_qty) VALUES (14, 100, null, '머신 러닝 개발자 스티커 모음', 12000, '2018-11-19 21:58:16', 100);
+INSERT INTO boot (id, cur_qty, mod_date, name, price, reg_date, total_qty) VALUES (15, 100, null, '인공지능 개발자 스티커 모음', 11000, '2018-11-19 21:58:16', 100);
 
 -- PRODUCT_CATEGORY
 insert into product_categories (product_id, category_id) values (1, 1);
@@ -67,6 +76,15 @@ insert into product_categories (product_id, category_id) values (3, 2);
 insert into product_categories (product_id, category_id) values (4, 2);
 insert into product_categories (product_id, category_id) values (5, 3);
 insert into product_categories (product_id, category_id) values (6, 1);
+insert into product_categories (product_id, category_id) values (7, 1);
+insert into product_categories (product_id, category_id) values (8, 1);
+insert into product_categories (product_id, category_id) values (9, 1);
+insert into product_categories (product_id, category_id) values (10, 2);
+insert into product_categories (product_id, category_id) values (11, 2);
+insert into product_categories (product_id, category_id) values (12, 1);
+insert into product_categories (product_id, category_id) values (13, 1);
+insert into product_categories (product_id, category_id) values (14, 1);
+insert into product_categories (product_id, category_id) values (15, 1);
 
 -- ORDER_STATUS
 INSERT INTO order_status (id, name) VALUES (1, '결제 확인중');
