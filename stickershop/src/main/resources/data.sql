@@ -8,7 +8,7 @@ insert into user (id, password, user_name, email, nickname, address, phone, zip_
 values ('spring', '1234', '우주인', 'asd@naver.com', '스프링유저', '경기도 고양시', '010-1234-5678', 12345, 1, 10000);
 
 insert into user (id, address, email, mileage, mod_date, nickname, password, phone, reg_date, user_name, zip_code, grade_id)
-values ('springboot', '서울시 강서구', 'qwe@google.com', 2000, null, '스프링부트유저', '1234', '010-1111-2222', '2018-11-15 17:53:34', '지구인', 54321, 1);
+values ('springproduct', '서울시 강서구', 'qwe@google.com', 2000, null, '스프링부트유저', '1234', '010-1111-2222', '2018-11-15 17:53:34', '지구인', 54321, 1);
 
 insert into user (id, address, email, mileage, mod_date, nickname, password, phone, reg_date, user_name, zip_code, grade_id)
 values ('jpa', '서울시 강남구', 'zxc@naver.com', 1000, null, 'jpa유저', '1234', '010-3212-3456', '2018-11-15 17:57:47', '화성인', 98766, 2);
@@ -26,7 +26,7 @@ insert into role (id, mod_date, name, reg_date) values (1, null, '사용자', '2
 -- user_role
 insert into user_roles (user_id, role_id) values ('admin', 99);
 insert into user_roles (user_id, role_id) values ('spring', 1);
-insert into user_roles (user_id, role_id) values ('springboot', 1);
+insert into user_roles (user_id, role_id) values ('springproduct', 1);
 insert into user_roles (user_id, role_id) values ('jpa', 1);
 insert into user_roles (user_id, role_id) values ('object', 1);
 
@@ -53,21 +53,21 @@ insert into category (id, mod_date, name, reg_date) values (2, null, '캐릭터'
 insert into category (id, mod_date, name, reg_date) values (3, null, '안내', '2018-11-15 19:18:38');
 
 -- product
-INSERT INTO boot (id, cur_qty, mod_date, name, price, reg_date, total_qty) VALUES (1, 90, null, '백엔드 개발자 스티커 모음', 8000, '2018-11-15 19:39:01', 100);
-INSERT INTO boot (id, cur_qty, mod_date, name, price, reg_date, total_qty) VALUES (2, 100, null, '프론트 엔드 개발자 스티커 모음', 8000, '2018-11-15 19:39:01', 100);
-INSERT INTO boot (id, cur_qty, mod_date, name, price, reg_date, total_qty) VALUES (3, 100, null, '포켓몬스터 스티커 모음', 10000, '2018-11-15 19:39:01', 50);
-INSERT INTO boot (id, cur_qty, mod_date, name, price, reg_date, total_qty) VALUES (4, 100, null, '뽀로로 스티커 모음', 15000, '2018-11-15 19:39:01', 200);
-INSERT INTO boot (id, cur_qty, mod_date, name, price, reg_date, total_qty) VALUES (5, 30, null, '안내 문구 스티커 모음', 10000, '2018-11-15 19:39:01', 100);
-INSERT INTO boot (id, cur_qty, mod_date, name, price, reg_date, total_qty) VALUES (6, 80, null, '풀스택 개발자 스티커 모음', 15000, '2018-11-15 19:39:01', 100);
-INSERT INTO boot (id, cur_qty, mod_date, name, price, reg_date, total_qty) VALUES (7, 100, null, '자바 개발자 스티커 모음', 10000, '2018-11-19 21:55:02', 100);
-INSERT INTO boot (id, cur_qty, mod_date, name, price, reg_date, total_qty) VALUES (8, 100, null, '파이썬 개발자 스티커 모음', 8000, '2018-11-19 21:55:02', 100);
-INSERT INTO boot (id, cur_qty, mod_date, name, price, reg_date, total_qty) VALUES (9, 100, null, '루비 개발자 스티커 모음', 1000, '2018-11-19 21:55:02', 100);
-INSERT INTO boot (id, cur_qty, mod_date, name, price, reg_date, total_qty) VALUES (10, 100, null, '디지몬 스티커 모음', 5000, '2018-11-19 21:55:02', 100);
-INSERT INTO boot (id, cur_qty, mod_date, name, price, reg_date, total_qty) VALUES (11, 100, null, '건담 스티커 모음', 10000, '2018-11-19 21:55:02', 100);
-INSERT INTO boot (id, cur_qty, mod_date, name, price, reg_date, total_qty) VALUES (12, 100, null, '리눅스 개발자 스티커 모음', 10000, '2018-11-19 21:55:02', 100);
-INSERT INTO boot (id, cur_qty, mod_date, name, price, reg_date, total_qty) VALUES (13, 100, null, '데이터베이스 개발자 스티커 모음', 10000, '2018-11-19 21:55:02', 100);
-INSERT INTO boot (id, cur_qty, mod_date, name, price, reg_date, total_qty) VALUES (14, 100, null, '머신 러닝 개발자 스티커 모음', 12000, '2018-11-19 21:58:16', 100);
-INSERT INTO boot (id, cur_qty, mod_date, name, price, reg_date, total_qty) VALUES (15, 100, null, '인공지능 개발자 스티커 모음', 11000, '2018-11-19 21:58:16', 100);
+INSERT INTO product (id, cur_qty, mod_date, name, price, reg_date, total_qty) VALUES (1, 90, null, '백엔드 개발자 스티커 모음', 8000, '2018-11-15 19:39:01', 100);
+INSERT INTO product (id, cur_qty, mod_date, name, price, reg_date, total_qty) VALUES (2, 100, null, '프론트 엔드 개발자 스티커 모음', 8000, '2018-11-15 19:39:01', 100);
+INSERT INTO product (id, cur_qty, mod_date, name, price, reg_date, total_qty) VALUES (3, 100, null, '포켓몬스터 스티커 모음', 10000, '2018-11-15 19:39:01', 50);
+INSERT INTO product (id, cur_qty, mod_date, name, price, reg_date, total_qty) VALUES (4, 100, null, '뽀로로 스티커 모음', 15000, '2018-11-15 19:39:01', 200);
+INSERT INTO product (id, cur_qty, mod_date, name, price, reg_date, total_qty) VALUES (5, 30, null, '안내 문구 스티커 모음', 10000, '2018-11-15 19:39:01', 100);
+INSERT INTO product (id, cur_qty, mod_date, name, price, reg_date, total_qty) VALUES (6, 80, null, '풀스택 개발자 스티커 모음', 15000, '2018-11-15 19:39:01', 100);
+INSERT INTO product (id, cur_qty, mod_date, name, price, reg_date, total_qty) VALUES (7, 100, null, '자바 개발자 스티커 모음', 10000, '2018-11-19 21:55:02', 100);
+INSERT INTO product (id, cur_qty, mod_date, name, price, reg_date, total_qty) VALUES (8, 100, null, '파이썬 개발자 스티커 모음', 8000, '2018-11-19 21:55:02', 100);
+INSERT INTO product (id, cur_qty, mod_date, name, price, reg_date, total_qty) VALUES (9, 100, null, '루비 개발자 스티커 모음', 1000, '2018-11-19 21:55:02', 100);
+INSERT INTO product (id, cur_qty, mod_date, name, price, reg_date, total_qty) VALUES (10, 100, null, '디지몬 스티커 모음', 5000, '2018-11-19 21:55:02', 100);
+INSERT INTO product (id, cur_qty, mod_date, name, price, reg_date, total_qty) VALUES (11, 100, null, '건담 스티커 모음', 10000, '2018-11-19 21:55:02', 100);
+INSERT INTO product (id, cur_qty, mod_date, name, price, reg_date, total_qty) VALUES (12, 100, null, '리눅스 개발자 스티커 모음', 10000, '2018-11-19 21:55:02', 100);
+INSERT INTO product (id, cur_qty, mod_date, name, price, reg_date, total_qty) VALUES (13, 100, null, '데이터베이스 개발자 스티커 모음', 10000, '2018-11-19 21:55:02', 100);
+INSERT INTO product (id, cur_qty, mod_date, name, price, reg_date, total_qty) VALUES (14, 100, null, '머신 러닝 개발자 스티커 모음', 12000, '2018-11-19 21:58:16', 100);
+INSERT INTO product (id, cur_qty, mod_date, name, price, reg_date, total_qty) VALUES (15, 100, null, '인공지능 개발자 스티커 모음', 11000, '2018-11-19 21:58:16', 100);
 
 -- PRODUCT_CATEGORY
 insert into product_categories (product_id, category_id) values (1, 1);
@@ -99,7 +99,7 @@ INSERT INTO order_status (id, name) VALUES (9, '환불');
 
 -- ORDER_INFO
 INSERT INTO order_info (id, reg_date, total_price, order_status_id, shipping_id, user_id) VALUES (1, '2018-11-16 17:08:36', 0, 1, null, 'spring');
-INSERT INTO order_info (id, reg_date, total_price, order_status_id, shipping_id, user_id) VALUES (2, '2018-11-16 17:08:36', 0, 2, null, 'springboot');
+INSERT INTO order_info (id, reg_date, total_price, order_status_id, shipping_id, user_id) VALUES (2, '2018-11-16 17:08:36', 0, 2, null, 'springproduct');
 INSERT INTO order_info (id, reg_date, total_price, order_status_id, shipping_id, user_id) VALUES (3, '2018-11-16 17:08:36', 0, 3, null, 'jpa');
 INSERT INTO order_info (id, reg_date, total_price, order_status_id, shipping_id, user_id) VALUES (4, '2018-11-16 17:08:36', 0, 4, null, 'object');
 INSERT INTO order_info (id, reg_date, total_price, order_status_id, shipping_id, user_id) VALUES (5, '2018-11-16 17:11:58', 0, 2, null, 'spring');
