@@ -5,19 +5,19 @@ insert into grade (id, name, sale_money, sale_ratio) values(3, '골드', 20000, 
 
 -- user
 insert into user (id, password, user_name, email, nickname, address, phone, zip_code, grade_id, mileage)
-values ('spring', '1234', '우주인', 'asd@naver.com', '스프링유저', '경기도 고양시', '010-1234-5678', 12345, 1, 10000);
+values ('spring', '{bcrypt}$2a$10$l6rAacvYq13yFz21Hz4z3OUpDGN3hcWvbrcsQFkAq27g2/UkYRSVW', '우주인', 'asd@naver.com', '스프링유저', '경기도 고양시', '010-1234-5678', 12345, 1, 10000);
 
 insert into user (id, address, email, mileage, mod_date, nickname, password, phone, reg_date, user_name, zip_code, grade_id)
-values ('springproduct', '서울시 강서구', 'qwe@google.com', 2000, null, '스프링부트유저', '1234', '010-1111-2222', '2018-11-15 17:53:34', '지구인', 54321, 1);
+values ('springproduct', '서울시 강서구', 'qwe@google.com', 2000, null, '스프링부트유저', '{bcrypt}$2a$10$JrU5xMSHY2zHgxAtLKI3Z.HMEMazraXcBxse4qst6s8TlqnmBcQEG', '010-1111-2222', '2018-11-15 17:53:34', '지구인', 54321, 1);
 
 insert into user (id, address, email, mileage, mod_date, nickname, password, phone, reg_date, user_name, zip_code, grade_id)
-values ('jpa', '서울시 강남구', 'zxc@naver.com', 1000, null, 'jpa유저', '1234', '010-3212-3456', '2018-11-15 17:57:47', '화성인', 98766, 2);
+values ('jpa', '서울시 강남구', 'zxc@naver.com', 1000, null, 'jpa유저', '{bcrypt}$2a$10$eQ6p574xq6rNE273oxb2BOd9ZtLOQxabD1EF3CuotKhn1zWErmgB.', '010-3212-3456', '2018-11-15 17:57:47', '화성인', 98766, 2);
 
 insert into user (id, address, email, mileage, mod_date, nickname, password, phone, reg_date, user_name, zip_code, grade_id)
-values ('object', '서울시 서초구', 'mlk@google.com', 200000, null, '최상위객체', '1234', '010-3333-1199', '2018-11-15 18:00:21', '나메크성인', 45678, 3);
+values ('object', '서울시 서초구', 'mlk@google.com', 200000, null, '최상위객체', '{bcrypt}$2a$10$OxyvEnzKfrjTiZfaWu2J3.1maIfoGl0y.awT8DOFhvNGQGVITZqpK', '010-3333-1199', '2018-11-15 18:00:21', '나메크성인', 45678, 3);
 
 insert into user (id, address, email, mileage, mod_date, nickname, password, phone, reg_date, user_name, zip_code, grade_id)
-values ('admin', '지구 어딘가', 'admin@naver.com', 100000000, null, '신[god]', '1111', '010-1234-1234', '2018-11-15 18:14:03', '관리자', 11111, null);
+values ('admin', '지구 어딘가', 'admin@naver.com', 100000000, null, '신[god]', '{bcrypt}$2a$10$iOnrbWp1ppyymX5OulbkL.kVkHDeuNmKr1So/TKcXmMLPQK1AzMTa', '010-1234-1234', '2018-11-15 18:14:03', '관리자', 11111, null);
 
 -- role
 insert into role (id, mod_date, name, reg_date) values (99, null, '관리자', '2018-11-15 18:07:27');
