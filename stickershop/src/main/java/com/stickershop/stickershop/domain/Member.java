@@ -1,7 +1,6 @@
 package com.stickershop.stickershop.domain;
 
 
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,15 +12,15 @@ import java.util.Set;
 @Getter
 @Setter
 @Entity
-@Table(name = "user")
-public class User {
+@Table(name = "member")
+public class Member {
 
     @Id
     @Column(length = 20, nullable = false, unique = true)
     private String id;
 
     @Column(length = 20, nullable = false)
-    private String userName;
+    private String memberName;
 
     @Column(length = 50, nullable = false, unique = true)
     private String email;
@@ -33,23 +32,23 @@ public class User {
     private String nickname;
 
     @OneToMany(cascade = CascadeType.REMOVE, orphanRemoval = true)
-    @JoinColumn(name = "user_id", nullable = false)
-    private List<UserCoupons> userCouponList;
+    @JoinColumn(name = "member_id", nullable = false)
+    private List<MemberCoupons> memberCouponList;
 
     @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"),
+    @JoinTable(name = "member_roles", joinColumns = @JoinColumn(name = "member_id"),
                                     inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE, orphanRemoval = true)
+    @OneToMany(mappedBy = "member", cascade = CascadeType.REMOVE, orphanRemoval = true)
     private List<OrderInfo> orderList;
 
     @OneToMany(cascade = CascadeType.REMOVE, orphanRemoval = true)
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "member_id")
     private List<CartProducts> cartProductList;
 
     @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "favorite_products", joinColumns = @JoinColumn(name = "user_id"),
+    @JoinTable(name = "favorite_products", joinColumns = @JoinColumn(name = "member_id"),
                                             inverseJoinColumns = @JoinColumn(name = "favorite_id"))
     private List<Product> favoriteProductList;
 

@@ -1,0 +1,33 @@
+<html>
+<head>
+    <title>Title</title>
+</head>
+<body>
+<div>
+    <table>
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>상품명</th>
+            <th>가격</th>
+        </tr>
+        </thead>
+        {{#each productList}}
+            <tbody>
+            <tr>
+                <td>
+                    {{id}}
+                </td>
+                <td>
+                    {{name}}
+                </td>
+                <td>
+                    {{price}}원
+                </td>
+            </tr>
+            </tbody>
+        {{/each}}
+    </table>
+</div>
+</body>
+</html>

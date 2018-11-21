@@ -1,8 +1,8 @@
 package com.stickershop.stickershop.security;
 
 import com.stickershop.stickershop.domain.Role;
-import com.stickershop.stickershop.domain.User;
-import com.stickershop.stickershop.service.UserService;
+import com.stickershop.stickershop.domain.Member;
+import com.stickershop.stickershop.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -19,22 +19,24 @@ import java.util.Collection;
 public class StickerShopUserDetailsService implements UserDetailsService {
 
     @Autowired
-    private UserService userService;
+    private MemberService memberService;
 
     @Override
     @Transactional(readOnly = true)
     public UserDetails loadUserByUsername(String id) throws UsernameNotFoundException {
-        User user = userService.getUser(id);
-        if (user == null) {
+        Member member = memberService.getMember(id);
+        if (member == null) {
             throw new UsernameNotFoundException(id + "is not found");
         }
 
         Collection<GrantedAuthority> authorities = new ArrayList<>();
-        for (Role role : user.getRoles()) {
+        for (Role role : member.getRoles()) {
             authorities.add(new SimpleGrantedAuthority("ROLE_" + role.getName()));
         }
 
-        UserDetails userDetails = new org.springframework.security.core.userdetails.User(id, user.getPassword(), authorities);
+        StickerShopUserDetails userDetails = new StickerShopUserDetails(id, member.getPassword(), authorities);
+        userDetails.setUserName(member.getMemberName());
+        userDetails.setEmail(member.getEmail());
         return userDetails;
     }
 }

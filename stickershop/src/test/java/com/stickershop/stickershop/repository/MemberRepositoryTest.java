@@ -1,7 +1,7 @@
 package com.stickershop.stickershop.repository;
 
-import com.stickershop.stickershop.Repository.UserRepository;
-import com.stickershop.stickershop.domain.User;
+import com.stickershop.stickershop.Repository.MemberRepository;
+import com.stickershop.stickershop.domain.Member;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,30 +17,30 @@ import javax.persistence.EntityManager;
 @RunWith(SpringRunner.class)
 @DataJpaTest
 @Transactional
-public class UserRepositoryTest {
+public class MemberRepositoryTest {
 
     @Autowired
     EntityManager entityManager;
 
     @Autowired
-    UserRepository userRepository;
+    MemberRepository memberRepository;
 
     @Test
     public void 모든_유저_목록_가져오기() throws Exception{
         Pageable pageable = PageRequest.of(0, 5);
-        Page<User> users = userRepository.findAll(pageable);
+        Page<Member> members = memberRepository.findAll(pageable);
 
-        System.out.println(users.getTotalElements());
-        System.out.println(users.getTotalPages());
+        System.out.println(members.getTotalElements());
+        System.out.println(members.getTotalPages());
 
         System.out.println("==========================");
-        for (User user : users) {
-            System.out.println(user.getId());
-            /*System.out.println(user.getUserId());*/
-            System.out.println(user.getUserName());
-            System.out.println(user.getNickname());
-            System.out.println(user.getEmail());
-            System.out.println(user.getPhone());
+        for (Member member : members) {
+            System.out.println(member.getId());
+            /*System.out.println(member.getUserId());*/
+            System.out.println(member.getMemberName());
+            System.out.println(member.getNickname());
+            System.out.println(member.getEmail());
+            System.out.println(member.getPhone());
             System.out.println("==========================");
         }
     }
@@ -48,21 +48,21 @@ public class UserRepositoryTest {
     @Test
     public void 키워드로_유저_목록_검색() throws Exception {
         Pageable pageable = PageRequest.of(0, 5);
-        Page<User> users = userRepository.findUsersByKeyword("spring", pageable);
+        Page<Member> members = memberRepository.findMembersByKeyword("spring", pageable);
 
-        System.out.println(users.getTotalElements());
-        System.out.println(users.getTotalPages());
+        System.out.println(members.getTotalElements());
+        System.out.println(members.getTotalPages());
 
         System.out.println("==========================");
-        for (User user : users) {
-            System.out.println(user.getId());
-            /*System.out.println(user.getUserId());*/
-            System.out.println(user.getUserName());
-            System.out.println(user.getNickname());
-            System.out.println(user.getEmail());
-            System.out.println(user.getPhone());
-            System.out.println(user.getOrderList().size());
-            System.out.println(user.getRoles().size());
+        for (Member member : members) {
+            System.out.println(member.getId());
+            /*System.out.println(member.getUserId());*/
+            System.out.println(member.getMemberName());
+            System.out.println(member.getNickname());
+            System.out.println(member.getEmail());
+            System.out.println(member.getPhone());
+            System.out.println(member.getOrderList().size());
+            System.out.println(member.getRoles().size());
             System.out.println("==========================");
         }
     }
@@ -72,22 +72,22 @@ public class UserRepositoryTest {
 
         Pageable pageable = PageRequest.of(0, 5);
 
-        Page<User> users = userRepository.findUserById("spring", pageable);
+        Page<Member> members = memberRepository.findMemberById("spring", pageable);
 
-        System.out.println(users.getTotalElements());
-        System.out.println(users.getTotalPages());
+        System.out.println(members.getTotalElements());
+        System.out.println(members.getTotalPages());
 
         System.out.println("==========================");
-        for (User user : users) {
-            System.out.println(user.getId());
-            System.out.println(user.getUserName());
-            System.out.println(user.getEmail());
-            System.out.println(user.getPhone());
-            System.out.println(user.getOrderList().size());
+        for (Member member : members) {
+            System.out.println(member.getId());
+            System.out.println(member.getMemberName());
+            System.out.println(member.getEmail());
+            System.out.println(member.getPhone());
+            System.out.println(member.getOrderList().size());
             System.out.println("==========================");
         }
 
-       /* User user1 = new User();
+       /* Member user1 = new Member();
         user1.setId("entity");
         user1.setAddress("우주 어딘가");
         user1.setEmail("asd11@gmail.com");
@@ -106,19 +106,19 @@ public class UserRepositoryTest {
 
     @Test
     public void 로그인_정보_가져오기() throws Exception {
-        int result = userRepository.findByIdAndPassword("spring", "1234");
+        int result = memberRepository.findByIdAndPassword("spring", "1234");
         System.out.println("결과 : " + result);
     }
 
     @Test
     public void 아이디_찾기() throws Exception {
-        String id = userRepository.findIdByEmail("asd@naver.com");
+        String id = memberRepository.findIdByEmail("asd@naver.com");
         System.out.println("아이디 " +id);
     }
 
     @Test
     public void 패스워드_찾기() throws Exception{
-        String pw = userRepository.findPasswordByIdAndEmail("spring", "asd@naver.com");
+        String pw = memberRepository.findPasswordByIdAndEmail("spring", "asd@naver.com");
         System.out.println("패스워드 : " + pw);
     }
 }

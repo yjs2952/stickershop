@@ -14,7 +14,7 @@ public class Shipping {
     private Long id;
 
     @Column(length = 20, nullable = false)
-    private String user_name;
+    private String member_name;
 
     @Column(length = 5, nullable = false)
     private int zipCode;

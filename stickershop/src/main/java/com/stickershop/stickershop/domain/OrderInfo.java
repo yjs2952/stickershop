@@ -16,8 +16,8 @@ public class OrderInfo {
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
-    private User user;
+    @JoinColumn(name = "member_id")
+    private Member member;
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "shipping_id")
@@ -29,7 +29,7 @@ public class OrderInfo {
 
     @OneToMany(orphanRemoval = true)
     @JoinColumn(name = "order_id")
-    private List<UserCoupons> userCouponList;
+    private List<MemberCoupons> memberCouponList;
 
     @OneToMany(orphanRemoval = true)
     @JoinColumn(name = "order_id")

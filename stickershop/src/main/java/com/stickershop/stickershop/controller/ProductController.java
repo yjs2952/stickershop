@@ -30,6 +30,6 @@ public class ProductController {
         Page<Product> products = productService.getList(category, pageable);
         modelMap.addAttribute("productList", products);
 
-        return "productList";
+        return "product/productList";
     }
 }
